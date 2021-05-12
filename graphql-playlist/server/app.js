@@ -1,5 +1,11 @@
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
+const mongooose = require('mongoose');
+
+mongooose.connect('mongodb://localhost:27017/graphql-playlist');
+mongooose.connection.once('open', () => {
+  console.log("Connected to db")
+})
 
 const schema = require("./schema/schema");
 
